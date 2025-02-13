@@ -1,0 +1,25 @@
+/* app/assets/stylesheets/custom.css */
+.tabs ul {
+    display: flex;
+    list-style-type: none;
+  }
+  
+  .tabs a {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .tabs a.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .tab-panel {
+    display: none;
+  }
+  
+  .tab-panel.active {
+    display: block;
+  }

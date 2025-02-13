@@ -1,0 +1,26 @@
+<h1><%= @classname %> の出席管理</h1>
+
+<% if @attendances.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>ユーザー名</th>
+        <th>日付</th>
+        <th>出席状況</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @attendances.each do |attendance| %>
+        <tr>
+          <td><%= attendance.user.name %></td>
+          <td><%= attendance.date %></td>
+          <td><%= attendance.status %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>該当するクラスの出席データはありません。</p>
+<% end %>
+
+<%= link_to "User一覧に戻る", users_path %>

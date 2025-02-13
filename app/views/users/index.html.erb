@@ -1,0 +1,45 @@
+<h1>生徒一覧</h1>
+<% @user.each do |user| %>
+  <p>
+    <%= user.name %> - <%= user.email %> - <%= user.classname %><br>
+    <%= user.id %>
+    <%= link_to "詳細へ", user_path(user.id) %>
+    <%= link_to "編集する", edit_user_path(user.id) %>
+    <%= link_to "削除する", user_path(user.id), data: { turbo_method: :delete } %>
+  </p>
+<% end %>
+
+<div class="classlist">
+  <h3>クラス一覧</h3>
+  <% @classname.each do |classes| %>
+    <p>
+      <%= classes %>
+      <%= link_to '特定のクラスの出席情報を見る', attendances_by_class_path(classes) %>
+    </p>
+  <% end %>
+</div>
+
+<div class="classeachlist">
+  <h3>クラス別生徒一覧</h3>
+  <% @classname.each do |cn| %>
+    <p><%= cn %>:</p>
+    <% @user.each do |u| %>
+      <% if u.classname == cn %>
+        <p><%= u.name %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<h3>欠席者一覧</h3>
+<ul>
+  <% @absent_students.each do |student| %>
+    <li><%= student.name %> - <%= student.classname %></li>
+  <% end %>
+</ul>
+
+<div>
+  <%= link_to "ユーザー追加", new_user_path %><br>
+  <%= link_to "生徒出席登録", users_home_path %><br>
+  <%= link_to '今日の出席情報を見る', attendances_by_date_path(Date.today) %>
+</div>

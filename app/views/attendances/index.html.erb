@@ -1,0 +1,20 @@
+<h1><%= @user.name %> の出席情報</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>出席日</th>
+      <th>出席状態</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @attendances.each do |attendance| %>
+      <tr>
+        <td><%= attendance.date.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= attendance.status %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '新しい出席を登録', new_user_attendance_path(@user) %>

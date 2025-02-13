@@ -1,0 +1,25 @@
+<h1>User情報</h1>
+<h3>新規User</h3>
+
+<%= form_for @user do |t| %>
+  <div class="field">
+    <%= t.label :name, "Name" %>
+    <%= t.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= t.label :email, "Email" %>
+    <%= t.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= t.label :classname, "Classname" %>
+    <%= t.text_field :classname %>
+  </div>
+
+  <div class="actions">
+    <%= t.submit "User登録する" %>
+  </div>
+<% end %>
+
+<%= link_to "User一覧に戻る", users_path %>

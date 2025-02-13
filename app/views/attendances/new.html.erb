@@ -1,0 +1,15 @@
+<%= form_with(model: [ @user, @attendance ], local: true) do |form| %>
+    <div>
+    <%= form.label :date, "出席日" %>
+    <%= form.datetime_local_field :date, value: Time.current.strftime("%Y-%m-%dT%H:%M") %>
+    </div>
+
+  <div>
+    <%= form.label :status, "出席状態" %>
+    <%= form.select :status, options_for_select(['出席', '欠席', '遅刻']) %>
+  </div>
+
+  <div>
+    <%= form.submit "登録" %>
+  </div>
+<% end %>

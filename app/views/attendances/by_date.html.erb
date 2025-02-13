@@ -1,0 +1,19 @@
+<h1>出席情報: <%= @date %></h1>
+
+<% @classname.each do |classname| %>
+	<%= classname.classname %>
+		<table>
+			<tr>
+				<th>ユーザー名</th>
+				<th>状態</th>
+			</tr>
+			<% @attendances.each do |attendance| %>
+				<% if classname.classname == attendance.user.classname %>
+					<tr>
+						<td><%= attendance.user.name %></td>
+						<td><%= attendance.status %></td>
+					</tr>
+				<% end %>
+			<% end %>
+		</table><br>
+<% end %>

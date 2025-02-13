@@ -1,0 +1,33 @@
+<div class="tabs">
+  <ul>
+    <% @classname.each_with_index do |classname, index| %>
+      <li>
+        <a href="#" class="<%= 'active' if index == 0 %>" data-tab="tab-<%= index %>">
+          <%= classname %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="tab-contents">
+  <% @classname.each_with_index do |classname, index| %>
+    <div class="tab-panel <%= 'active' if index == 0 %>" id="tab-<%= index %>">
+      <h3><%= classname %>の生徒</h3>
+      <% @user.each do |user| %>
+        <% if user.classname == classname %>
+          <% if user.attendances.exists?(date: Date.today) %>
+            <% attendance = user.attendances.find_by(date: Date.today) %>
+            <%= form_with url: attendance_path(attendance), method: :delete do %>
+              <%= submit_tag "本日の出席登録を削除する (#{user.name})" %>
+            <% end %>
+          <% else %>
+            <%= form_with url: mark_attendance_user_attendances_path(user_id: user.id), method: :post do %>
+              <%= submit_tag "出席を登録する (#{user.name})" %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

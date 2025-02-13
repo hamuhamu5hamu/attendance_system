@@ -1,0 +1,11 @@
+<!-- app/views/attendances/new_by_class.html.erb -->
+<h1><%= @classname %>の生徒一覧</h1>
+
+<% @users.each do |user| %>
+  <div>
+    <p><%= user.name %></p>
+    <%= form_with url: mark_attendance_users_path(user_id: user.id), method: :post do %>
+      <%= submit_tag '出席', data: { confirm: "#{user.name} の出席を登録しますか？" } %>
+    <% end %>
+  </div>
+<% end %>

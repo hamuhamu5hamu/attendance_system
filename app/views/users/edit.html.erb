@@ -1,0 +1,9 @@
+<%= form_for @user do |u| %>
+  <%= u.label :name %>
+  <%= u.text_field :name, :size => 140 %><br>
+  <%= u.label :email %>
+  <%= u.text_field :email, :size => 140 %><br>
+  <%= u.label :classname %>
+  <%= u.text_field :classname, :size => 140 %><br>
+  <%= u.submit "編集する" %>
+<% end %>
